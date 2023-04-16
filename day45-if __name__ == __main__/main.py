@@ -1,0 +1,3 @@
+import customModule
+
+customModule.customFunction()

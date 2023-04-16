@@ -1,4 +1,5 @@
 import os
+# import shutil # shutil.retree this is very powerfull option to completely delete folder tree
 
 # Get the directory of the current script file
 dir_path = os.path.dirname(os.path.realpath(__file__))

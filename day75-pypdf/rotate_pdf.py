@@ -26,5 +26,5 @@ def rotate_pdf(pdf_path, output_path = cur_dir, page_num: int = 0, rotation: int
     else:
         print("no pdf file found")
 
-pdf_path = os.path.join(cur_dir, 'merged.pdf')
-rotate_pdf(pdf_path, rotation=180)
+pdf_path = os.path.join(cur_dir, 'output.pdf')
+rotate_pdf(pdf_path, rotation=270)

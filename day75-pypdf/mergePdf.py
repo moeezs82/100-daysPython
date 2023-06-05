@@ -12,7 +12,7 @@ def fetch_all_pdf_files(parent_folder: str):
                 target_files.append(os.path.join(path, name))
     return target_files
 
-pdf_path_folder = os.path.join(cur_dir, "test")
+pdf_path_folder = os.path.join(cur_dir, "pdf_to_merge")
 
 # print(fetch_all_pdf_files(pdf_path_folder))
 

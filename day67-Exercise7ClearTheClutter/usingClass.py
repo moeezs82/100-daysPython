@@ -19,33 +19,34 @@ class ClutterClearer:
         if cls.file_ext[0] != '.':
             cls.file_ext = '.' + cls.file_ext
         if os.path.isdir(cls.file_dir):
-            for file_name in os.listdir(cls.file_dir):
-                if file_name.endswith(cls.file_ext):
-                    count += 1
-                    new_file_name = f"{count}{cls.file_ext}"
-                    old_file_path = os.path.join(cls.file_dir, file_name)
-                    new_file_path = os.path.join(cls.file_dir, new_file_name)
-                    os.rename(old_file_path, new_file_path)
+            for root, dirs, files in os.walk(cls.file_dir):
+                for file_name in files:
+                    if file_name.endswith(cls.file_ext):
+                        count += 1
+                        new_file_name = f"{count}{cls.file_ext}"
+                        old_file_path = os.path.join(root, file_name)
+                        new_file_path = os.path.join(root, new_file_name)
+                        os.rename(old_file_path, new_file_path)
             print("Operation Successful\n")
         else:
             print("Directory does not exist\n")
             
-    def rename_files(cls):
-        '''take a directory and file extension and rename related file to 1,2,3... order'''
-        count = 0
-        if cls.file_ext[0] != '.':
-            cls.file_ext = '.' + cls.file_ext
-        if os.path.isdir(cls.file_dir):
-            for file_name in os.listdir(cls.file_dir):
-                if file_name.endswith(cls.file_ext):
-                    count += 1
-                    new_file_name = f"{count}{cls.file_ext}"
-                    old_file_path = os.path.join(cls.file_dir, file_name)
-                    new_file_path = os.path.join(cls.file_dir, new_file_name)
-                    os.rename(old_file_path, new_file_path)
-            print("Operation Successful\n")
-        else:
-            print("Directory does not exist\n")
+    # def rename_files(cls):
+    #     '''take a directory and file extension and rename related file to 1,2,3... order'''
+    #     count = 0
+    #     if cls.file_ext[0] != '.':
+    #         cls.file_ext = '.' + cls.file_ext
+    #     if os.path.isdir(cls.file_dir):
+    #         for file_name in os.listdir(cls.file_dir):
+    #             if file_name.endswith(cls.file_ext):
+    #                 count += 1
+    #                 new_file_name = f"{count}{cls.file_ext}"
+    #                 old_file_path = os.path.join(cls.file_dir, file_name)
+    #                 new_file_path = os.path.join(cls.file_dir, new_file_name)
+    #                 os.rename(old_file_path, new_file_path)
+    #         print("Operation Successful\n")
+    #     else:
+    #         print("Directory does not exist\n")
 
 print("***Welcome to Clear The Clutter!***")
 print("The Program will ask you to provide the complete directory path ex: F:/Learning/python/100daysPython and axtension for file you want to clear the clutter\n")

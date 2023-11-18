@@ -16,6 +16,7 @@ class ClutterClearer:
         count = 0
         if os.path.isdir(cls.file_dir):
             for root, dirs, files in os.walk(cls.file_dir):
+                # Rename files
                 for file_name in files:
                     file_name_without_ext, file_ext = os.path.splitext(file_name)
                     modified_string_hyphens = file_name_without_ext.replace(' ', '-')
@@ -23,6 +24,13 @@ class ClutterClearer:
                     old_file_path = os.path.join(root, file_name)
                     new_file_path = os.path.join(root, new_file_name)
                     os.rename(old_file_path, new_file_path)
+
+                # Rename directories
+                for dir_name in dirs:
+                    modified_dir_name = dir_name.replace(' ', '-')
+                    old_dir_path = os.path.join(root, dir_name)
+                    new_dir_path = os.path.join(root, modified_dir_name)
+                    os.rename(old_dir_path, new_dir_path)
             print("Operation Successful\n")
         else:
             print("Directory does not exist\n")
